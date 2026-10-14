@@ -1,0 +1,572 @@
+[
+  {
+    "title": "Two Sum",
+    "description": "Given an integer array and a target, return the indices of two distinct elements whose sum equals the target. Exactly one solution exists. Input: n, then n integers, then target. Output the two zero-based indices in ascending order.",
+    "difficulty": "easy",
+    "tags": "array",
+    "visibleTestCases": [
+      {
+        "input": "4\n2 7 11 15\n9",
+        "output": "0 1",
+        "explanation": "2 + 7 = 9, at indices 0 and 1."
+      },
+      {
+        "input": "3\n3 2 4\n6",
+        "output": "1 2",
+        "explanation": "2 + 4 = 6."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "2\n3 3\n6",
+        "output": "0 1"
+      },
+      {
+        "input": "5\n1 8 12 -2 4\n2",
+        "output": "0 3"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "C++",
+        "initialCode": "// Read n, array, target from stdin; print two indices."
+      },
+      {
+        "language": "Java",
+        "initialCode": "// Read n, array, target from stdin; print two indices."
+      },
+      {
+        "language": "JavaScript",
+        "initialCode": "// Read n, array, target from stdin; print two indices."
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "C++",
+        "completeCode": "#include <bits/stdc++.h>\nusing namespace std; int main(){int n; if(!(cin>>n))return 0; vector<int>a(n); for(int&x:a)cin>>x; int t;cin>>t; unordered_map<int,int>m; for(int i=0;i<n;i++){int v=t-a[i];if(m.count(v)){cout<<m[v]<<\" \"<<i;return 0;}m[a[i]]=i;}}"
+      },
+      {
+        "language": "Java",
+        "completeCode": "import java.util.*; public class Main{public static void main(String[]z){Scanner s=new Scanner(System.in);int n=s.nextInt();int[]a=new int[n];for(int i=0;i<n;i++)a[i]=s.nextInt();int t=s.nextInt();Map<Integer,Integer>m=new HashMap<>();for(int i=0;i<n;i++){if(m.containsKey(t-a[i])){System.out.print(m.get(t-a[i])+\" \"+i);return;}m.put(a[i],i);}}}"
+      },
+      {
+        "language": "JavaScript",
+        "completeCode": "const fs=require('fs');const a=fs.readFileSync(0,'utf8').trim().split(/\\s+/).map(Number);let n=a[0],t=a[n+1],m=new Map();for(let i=0;i<n;i++){let v=t-a[i+1];if(m.has(v)){console.log(m.get(v),i);break}m.set(a[i+1],i)}"
+      }
+    ],
+    "problemCreator": "REPLACE_WITH_YOUR_USER_OBJECT_ID"
+  },
+  {
+    "title": "Maximum Subarray Sum",
+    "description": "Given an integer array, find the largest sum of any non-empty contiguous subarray. Input: n followed by n integers. Output the maximum sum.",
+    "difficulty": "medium",
+    "tags": "array",
+    "visibleTestCases": [
+      {
+        "input": "9\n-2 1 -3 4 -1 2 1 -5 4",
+        "output": "6",
+        "explanation": "The subarray [4,-1,2,1] has sum 6."
+      },
+      {
+        "input": "5\n1 2 3 4 5",
+        "output": "15",
+        "explanation": "The entire array has the largest sum."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "4\n-8 -3 -6 -2",
+        "output": "-2"
+      },
+      {
+        "input": "6\n5 -2 3 4 -10 6",
+        "output": "10"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "C++",
+        "initialCode": "// Read n and array; print maximum non-empty subarray sum."
+      },
+      {
+        "language": "Java",
+        "initialCode": "// Read n and array; print maximum non-empty subarray sum."
+      },
+      {
+        "language": "JavaScript",
+        "initialCode": "// Read n and array; print maximum non-empty subarray sum."
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "C++",
+        "completeCode": "#include <bits/stdc++.h>\nusing namespace std;int main(){int n;cin>>n;long long x,cur,ans;cin>>x;cur=ans=x;for(int i=1;i<n;i++){cin>>x;cur=max(x,cur+x);ans=max(ans,cur);}cout<<ans;}"
+      },
+      {
+        "language": "Java",
+        "completeCode": "import java.util.*;public class Main{public static void main(String[]z){Scanner s=new Scanner(System.in);int n=s.nextInt();long c=s.nextLong(),b=c;for(int i=1;i<n;i++){long x=s.nextLong();c=Math.max(x,c+x);b=Math.max(b,c);}System.out.print(b);}}"
+      },
+      {
+        "language": "JavaScript",
+        "completeCode": "const a=require('fs').readFileSync(0,'utf8').trim().split(/\\s+/).map(Number),n=a[0];let c=a[1],b=c;for(let i=2;i<=n;i++){c=Math.max(a[i],c+a[i]);b=Math.max(b,c)}console.log(b);"
+      }
+    ],
+    "problemCreator": "REPLACE_WITH_YOUR_USER_OBJECT_ID"
+  },
+  {
+    "title": "Valid Parentheses",
+    "description": "Given a string containing only (), [] and {}, determine whether brackets are properly matched and nested. Input is one bracket string. Output true or false.",
+    "difficulty": "easy",
+    "tags": "stack",
+    "visibleTestCases": [
+      {
+        "input": "()[]{}",
+        "output": "true",
+        "explanation": "Every opening bracket is closed in the correct order."
+      },
+      {
+        "input": "([)]",
+        "output": "false",
+        "explanation": "The closing parenthesis appears before the square bracket closes."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "{[()]}",
+        "output": "true"
+      },
+      {
+        "input": "((",
+        "output": "false"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "C++",
+        "initialCode": "// Read bracket string; print true or false."
+      },
+      {
+        "language": "Java",
+        "initialCode": "// Read bracket string; print true or false."
+      },
+      {
+        "language": "JavaScript",
+        "initialCode": "// Read bracket string; print true or false."
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "C++",
+        "completeCode": "#include <bits/stdc++.h>\nusing namespace std;int main(){string s;cin>>s;stack<char>q;for(char c:s){if(c=='('||c=='['||c=='{')q.push(c);else{if(q.empty()||(c==')'&&q.top()!='(')||(c==']'&&q.top()!='[')||(c=='}'&&q.top()!='{')){cout<<\"false\";return 0;}q.pop();}}cout<<(q.empty()?\"true\":\"false\");}"
+      },
+      {
+        "language": "Java",
+        "completeCode": "import java.util.*;public class Main{public static void main(String[]z){Scanner s=new Scanner(System.in);String x=s.next();Deque<Character>q=new ArrayDeque<>();boolean ok=true;for(char c:x.toCharArray()){if(c=='('||c=='['||c=='{')q.push(c);else if(q.isEmpty()||(c==')'&&q.peek()!='(')||(c==']'&&q.peek()!='[')||(c=='}'&&q.peek()!='{')){ok=false;break;}else q.pop();}System.out.print(ok&&q.isEmpty()?\"true\":\"false\");}}"
+      },
+      {
+        "language": "JavaScript",
+        "completeCode": "const s=require('fs').readFileSync(0,'utf8').trim(),q=[],m={')':'(',']':'[','}':'{'};let ok=true;for(const c of s){if('([{'.includes(c))q.push(c);else if(q.pop()!==m[c]){ok=false;break}}console.log(ok&&q.length===0?'true':'false');"
+      }
+    ],
+    "problemCreator": "REPLACE_WITH_YOUR_USER_OBJECT_ID"
+  },
+  {
+    "title": "Reverse a Linked List",
+    "description": "Given a singly linked list, reverse it and print its values. Input: n followed by n integers. Output the reversed values separated by spaces. For n=0, print an empty line.",
+    "difficulty": "easy",
+    "tags": "linked list",
+    "visibleTestCases": [
+      {
+        "input": "5\n1 2 3 4 5",
+        "output": "5 4 3 2 1",
+        "explanation": "The list order is reversed."
+      },
+      {
+        "input": "1\n7",
+        "output": "7",
+        "explanation": "A one-node list remains unchanged."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "0",
+        "output": ""
+      },
+      {
+        "input": "4\n-1 0 8 3",
+        "output": "3 8 0 -1"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "C++",
+        "initialCode": "// Read n and list values; print them in reverse order."
+      },
+      {
+        "language": "Java",
+        "initialCode": "// Read n and list values; print them in reverse order."
+      },
+      {
+        "language": "JavaScript",
+        "initialCode": "// Read n and list values; print them in reverse order."
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "C++",
+        "completeCode": "#include <bits/stdc++.h>\nusing namespace std;int main(){int n;cin>>n;vector<int>a(n);for(int&x:a)cin>>x;reverse(a.begin(),a.end());for(int i=0;i<n;i++){if(i)cout<<\" \";cout<<a[i];}}"
+      },
+      {
+        "language": "Java",
+        "completeCode": "import java.util.*;public class Main{public static void main(String[]z){Scanner s=new Scanner(System.in);int n=s.nextInt();int[]a=new int[n];for(int i=0;i<n;i++)a[i]=s.nextInt();StringJoiner j=new StringJoiner(\" \" );for(int i=n-1;i>=0;i--)j.add(\"\"+a[i]);System.out.print(j);}}"
+      },
+      {
+        "language": "JavaScript",
+        "completeCode": "const a=require('fs').readFileSync(0,'utf8').trim().split(/\\s+/).map(Number),n=a[0];console.log(a.slice(1,n+1).reverse().join(' '));"
+      }
+    ],
+    "problemCreator": "REPLACE_WITH_YOUR_USER_OBJECT_ID"
+  },
+  {
+    "title": "Binary Tree Level Order Traversal",
+    "description": "Given a binary tree in level-order form where -1 represents a missing node, print the values level by level from left to right. Input: n followed by n level-order tokens. Output all present values in traversal order separated by spaces. The representation is a complete-array indexing representation.",
+    "difficulty": "medium",
+    "tags": "tree",
+    "visibleTestCases": [
+      {
+        "input": "7\n1 2 3 4 5 -1 6",
+        "output": "1 2 3 4 5 6",
+        "explanation": "Level order visits each present node left to right."
+      },
+      {
+        "input": "3\n8 -1 9",
+        "output": "8 9",
+        "explanation": "The missing left child is skipped."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1\n4",
+        "output": "4"
+      },
+      {
+        "input": "5\n1 2 -1 -1 3",
+        "output": "1 2 3"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "C++",
+        "initialCode": "// Read n and array-form tree; print present values in level order."
+      },
+      {
+        "language": "Java",
+        "initialCode": "// Read n and array-form tree; print present values in level order."
+      },
+      {
+        "language": "JavaScript",
+        "initialCode": "// Read n and array-form tree; print present values in level order."
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "C++",
+        "completeCode": "#include <bits/stdc++.h>\nusing namespace std;int main(){int n;cin>>n;vector<int>a(n);for(int&x:a)cin>>x;bool f=1;for(int x:a)if(x!=-1){if(!f)cout<<\" \";cout<<x;f=0;}}"
+      },
+      {
+        "language": "Java",
+        "completeCode": "import java.util.*;public class Main{public static void main(String[]z){Scanner s=new Scanner(System.in);int n=s.nextInt();StringJoiner j=new StringJoiner(\" \" );for(int i=0;i<n;i++){int x=s.nextInt();if(x!=-1)j.add(\"\"+x);}System.out.print(j);}}"
+      },
+      {
+        "language": "JavaScript",
+        "completeCode": "const a=require('fs').readFileSync(0,'utf8').trim().split(/\\s+/).map(Number),n=a[0];console.log(a.slice(1,n+1).filter(x=>x!==-1).join(' '));"
+      }
+    ],
+    "problemCreator": "REPLACE_WITH_YOUR_USER_OBJECT_ID"
+  },
+  {
+    "title": "Number of Islands",
+    "description": "Given an m by n grid of 0s and 1s, count groups of adjacent 1s connected horizontally or vertically. Input: m n followed by m strings of n characters. Output the number of islands.",
+    "difficulty": "medium",
+    "tags": "graph",
+    "visibleTestCases": [
+      {
+        "input": "4 5\n11000\n11000\n00100\n00011",
+        "output": "3",
+        "explanation": "There are three separate four-directionally connected groups."
+      },
+      {
+        "input": "2 2\n11\n11",
+        "output": "1",
+        "explanation": "All land cells are connected."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1 4\n0000",
+        "output": "0"
+      },
+      {
+        "input": "3 3\n101\n010\n101",
+        "output": "5"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "C++",
+        "initialCode": "// Read grid dimensions and rows; print island count."
+      },
+      {
+        "language": "Java",
+        "initialCode": "// Read grid dimensions and rows; print island count."
+      },
+      {
+        "language": "JavaScript",
+        "initialCode": "// Read grid dimensions and rows; print island count."
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "C++",
+        "completeCode": "#include <bits/stdc++.h>\nusing namespace std;int main(){int m,n;cin>>m>>n;vector<string>g(m);for(auto&x:g)cin>>x;int ans=0,dx[]={1,-1,0,0},dy[]={0,0,1,-1};for(int i=0;i<m;i++)for(int j=0;j<n;j++)if(g[i][j]=='1'){ans++;queue<pair<int,int>>q;q.push({i,j});g[i][j]='0';while(!q.empty()){auto [x,y]=q.front();q.pop();for(int k=0;k<4;k++){int a=x+dx[k],b=y+dy[k];if(a>=0&&a<m&&b>=0&&b<n&&g[a][b]=='1'){g[a][b]='0';q.push({a,b});}}}}cout<<ans;}"
+      },
+      {
+        "language": "Java",
+        "completeCode": "import java.util.*;public class Main{public static void main(String[]z){Scanner s=new Scanner(System.in);int m=s.nextInt(),n=s.nextInt(),ans=0;char[][]g=new char[m][n];for(int i=0;i<m;i++)g[i]=s.next().toCharArray();int[]dx={1,-1,0,0},dy={0,0,1,-1};for(int i=0;i<m;i++)for(int j=0;j<n;j++)if(g[i][j]=='1'){ans++;ArrayDeque<int[]>q=new ArrayDeque<>();q.add(new int[]{i,j});g[i][j]='0';while(!q.isEmpty()){int[]p=q.remove();for(int k=0;k<4;k++){int x=p[0]+dx[k],y=p[1]+dy[k];if(x>=0&&x<m&&y>=0&&y<n&&g[x][y]=='1'){g[x][y]='0';q.add(new int[]{x,y});}}}}System.out.print(ans);}}"
+      },
+      {
+        "language": "JavaScript",
+        "completeCode": "const t=require('fs').readFileSync(0,'utf8').trim().split(/\\s+/),m=+t[0],n=+t[1],g=t.slice(2).map(x=>x.split(''));let ans=0;for(let i=0;i<m;i++)for(let j=0;j<n;j++)if(g[i][j]==='1'){ans++;let q=[[i,j]];g[i][j]='0';for(let h=0;h<q.length;h++){let [x,y]=q[h];for(const [a,b] of [[1,0],[-1,0],[0,1],[0,-1]]){let u=x+a,v=y+b;if(u>=0&&u<m&&v>=0&&v<n&&g[u][v]==='1'){g[u][v]='0';q.push([u,v])}}}}console.log(ans);"
+      }
+    ],
+    "problemCreator": "REPLACE_WITH_YOUR_USER_OBJECT_ID"
+  },
+  {
+    "title": "Climbing Stairs",
+    "description": "You are climbing n steps and can take either 1 or 2 steps at a time. Count the distinct ways to reach the top. Input: n. Output the count. Assume 1 <= n <= 90.",
+    "difficulty": "easy",
+    "tags": "Dynamic Programming",
+    "visibleTestCases": [
+      {
+        "input": "2",
+        "output": "2",
+        "explanation": "The sequences are 1+1 and 2."
+      },
+      {
+        "input": "5",
+        "output": "8",
+        "explanation": "There are eight distinct step sequences."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1",
+        "output": "1"
+      },
+      {
+        "input": "10",
+        "output": "89"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "C++",
+        "initialCode": "// Read n; print number of ways using 1 or 2 steps."
+      },
+      {
+        "language": "Java",
+        "initialCode": "// Read n; print number of ways using 1 or 2 steps."
+      },
+      {
+        "language": "JavaScript",
+        "initialCode": "// Read n; print number of ways using 1 or 2 steps."
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "C++",
+        "completeCode": "#include <bits/stdc++.h>\nusing namespace std;int main(){int n;cin>>n;long long a=1,b=1;for(int i=2;i<=n;i++){long long c=a+b;a=b;b=c;}cout<<b;}"
+      },
+      {
+        "language": "Java",
+        "completeCode": "import java.util.*;public class Main{public static void main(String[]z){int n=new Scanner(System.in).nextInt();long a=1,b=1;for(int i=2;i<=n;i++){long c=a+b;a=b;b=c;}System.out.print(b);}}"
+      },
+      {
+        "language": "JavaScript",
+        "completeCode": "let n=+require('fs').readFileSync(0,'utf8').trim(),a=1,b=1;for(let i=2;i<=n;i++){[a,b]=[b,a+b]}console.log(b);"
+      }
+    ],
+    "problemCreator": "REPLACE_WITH_YOUR_USER_OBJECT_ID"
+  },
+  {
+    "title": "Coin Change Minimum",
+    "description": "Given coin denominations and an amount, return the minimum number of coins needed to make that amount, or -1 if impossible. Each denomination may be used unlimited times. Input: n amount, then n coin values. Output the minimum count.",
+    "difficulty": "medium",
+    "tags": "Dynamic Programming",
+    "visibleTestCases": [
+      {
+        "input": "3 11\n1 2 5",
+        "output": "3",
+        "explanation": "11 = 5 + 5 + 1 uses three coins."
+      },
+      {
+        "input": "1 3\n2",
+        "output": "-1",
+        "explanation": "An odd amount cannot be formed using only 2-value coins."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1 0\n7",
+        "output": "0"
+      },
+      {
+        "input": "4 27\n2 5 10 1",
+        "output": "4"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "C++",
+        "initialCode": "// Read n, amount, denominations; print minimum coin count or -1."
+      },
+      {
+        "language": "Java",
+        "initialCode": "// Read n, amount, denominations; print minimum coin count or -1."
+      },
+      {
+        "language": "JavaScript",
+        "initialCode": "// Read n, amount, denominations; print minimum coin count or -1."
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "C++",
+        "completeCode": "#include <bits/stdc++.h>\nusing namespace std;int main(){int n,a;cin>>n>>a;vector<int>c(n);for(int&x:c)cin>>x;vector<int>d(a+1,1e9);d[0]=0;for(int x:c)for(int i=x;i<=a;i++)d[i]=min(d[i],d[i-x]+1);cout<<(d[a]>=1e9?-1:d[a]);}"
+      },
+      {
+        "language": "Java",
+        "completeCode": "import java.util.*;public class Main{public static void main(String[]z){Scanner s=new Scanner(System.in);int n=s.nextInt(),a=s.nextInt();int[]c=new int[n];for(int i=0;i<n;i++)c[i]=s.nextInt();int[]d=new int[a+1];Arrays.fill(d,1000000000);d[0]=0;for(int x:c)for(int i=x;i<=a;i++)d[i]=Math.min(d[i],d[i-x]+1);System.out.print(d[a]>=1000000000?-1:d[a]);}}"
+      },
+      {
+        "language": "JavaScript",
+        "completeCode": "const x=require('fs').readFileSync(0,'utf8').trim().split(/\\s+/).map(Number),n=x[0],a=x[1],c=x.slice(2),d=Array(a+1).fill(1e9);d[0]=0;for(const v of c)for(let i=v;i<=a;i++)d[i]=Math.min(d[i],d[i-v]+1);console.log(d[a]>=1e9?-1:d[a]);"
+      }
+    ],
+    "problemCreator": "REPLACE_WITH_YOUR_USER_OBJECT_ID"
+  },
+  {
+    "title": "Implement Queue Using Two Stacks",
+    "description": "Process q commands for a queue: 'push x', 'pop', and 'front'. Print the removed value for each pop and the front value for each front command. The input guarantees pop and front are called only when non-empty. Input: q followed by q commands.",
+    "difficulty": "medium",
+    "tags": "queue",
+    "visibleTestCases": [
+      {
+        "input": "6\npush 4\npush 7\nfront\npop\nfront\npop",
+        "output": "4\n4\n7\n7",
+        "explanation": "Queue operations preserve insertion order."
+      },
+      {
+        "input": "4\npush -2\nfront\npop\npush 9",
+        "output": "-2\n-2",
+        "explanation": "The only value is returned by front and pop."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "5\npush 1\npush 2\npop\npush 3\nfront",
+        "output": "1\n2"
+      },
+      {
+        "input": "3\npush 8\npop\npush 5",
+        "output": "8"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "C++",
+        "initialCode": "// Read q queue commands; print pop/front results, one per line."
+      },
+      {
+        "language": "Java",
+        "initialCode": "// Read q queue commands; print pop/front results, one per line."
+      },
+      {
+        "language": "JavaScript",
+        "initialCode": "// Read q queue commands; print pop/front results, one per line."
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "C++",
+        "completeCode": "#include <bits/stdc++.h>\nusing namespace std;int main(){int q;cin>>q;stack<int>a,b;while(q--){string op;cin>>op;if(op==\"push\"){int x;cin>>x;a.push(x);}else{if(b.empty())while(!a.empty()){b.push(a.top());a.pop();}cout<<b.top()<<\"\\n\";if(op==\"pop\")b.pop();}}}"
+      },
+      {
+        "language": "Java",
+        "completeCode": "import java.util.*;public class Main{public static void main(String[]z){Scanner s=new Scanner(System.in);int q=s.nextInt();Deque<Integer>a=new ArrayDeque<>(),b=new ArrayDeque<>();StringBuilder o=new StringBuilder();while(q-->0){String op=s.next();if(op.equals(\"push\"))a.push(s.nextInt());else{if(b.isEmpty())while(!a.isEmpty())b.push(a.pop());o.append(b.peek()).append('\\n');if(op.equals(\"pop\"))b.pop();}}System.out.print(o);}}"
+      },
+      {
+        "language": "JavaScript",
+        "completeCode": "const t=require('fs').readFileSync(0,'utf8').trim().split(/\\s+/);let i=0,q=+t[i++],a=[],b=[],o=[];while(q--){let op=t[i++];if(op==='push')a.push(+t[i++]);else{if(!b.length)b=a.reverse(),a=[];o.push(b[b.length-1]);if(op==='pop')b.pop()}}console.log(o.join('\\n'));"
+      }
+    ],
+    "problemCreator": "REPLACE_WITH_YOUR_USER_OBJECT_ID"
+  },
+  {
+    "title": "Shortest Path in an Unweighted Graph",
+    "description": "Given an undirected graph with vertices numbered 0 through n-1, find the shortest number of edges from source s to destination t. Input: n m, then m edges u v, then s t. Output the distance, or -1 if unreachable.",
+    "difficulty": "medium",
+    "tags": "graph",
+    "visibleTestCases": [
+      {
+        "input": "5 5\n0 1\n0 2\n1 3\n2 3\n3 4\n0 4",
+        "output": "3",
+        "explanation": "A shortest route is 0-1-3-4, using three edges."
+      },
+      {
+        "input": "3 1\n0 1\n0 2",
+        "output": "-1",
+        "explanation": "Vertex 2 is disconnected from vertex 0."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1 0\n0 0",
+        "output": "0"
+      },
+      {
+        "input": "4 3\n0 1\n1 2\n2 3\n3 0",
+        "output": "3"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "C++",
+        "initialCode": "// Read graph and source/destination; print shortest edge count or -1."
+      },
+      {
+        "language": "Java",
+        "initialCode": "// Read graph and source/destination; print shortest edge count or -1."
+      },
+      {
+        "language": "JavaScript",
+        "initialCode": "// Read graph and source/destination; print shortest edge count or -1."
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "C++",
+        "completeCode": "#include <bits/stdc++.h>\nusing namespace std;int main(){int n,m;cin>>n>>m;vector<vector<int>>g(n);while(m--){int u,v;cin>>u>>v;g[u].push_back(v);g[v].push_back(u);}int s,t;cin>>s>>t;vector<int>d(n,-1);queue<int>q;d[s]=0;q.push(s);while(!q.empty()){int u=q.front();q.pop();for(int v:g[u])if(d[v]<0)d[v]=d[u]+1,q.push(v);}cout<<d[t];}"
+      },
+      {
+        "language": "Java",
+        "completeCode": "import java.util.*;public class Main{public static void main(String[]z){Scanner s=new Scanner(System.in);int n=s.nextInt(),m=s.nextInt();List<List<Integer>>g=new ArrayList<>();for(int i=0;i<n;i++)g.add(new ArrayList<>());while(m-->0){int u=s.nextInt(),v=s.nextInt();g.get(u).add(v);g.get(v).add(u);}int a=s.nextInt(),b=s.nextInt();int[]d=new int[n];Arrays.fill(d,-1);ArrayDeque<Integer>q=new ArrayDeque<>();d[a]=0;q.add(a);while(!q.isEmpty()){int u=q.remove();for(int v:g.get(u))if(d[v]<0){d[v]=d[u]+1;q.add(v);}}System.out.print(d[b]);}}"
+      },
+      {
+        "language": "JavaScript",
+        "completeCode": "const a=require('fs').readFileSync(0,'utf8').trim().split(/\\s+/).map(Number);let i=0,n=a[i++],m=a[i++],g=Array.from({length:n},()=>[]);for(let k=0;k<m;k++){let u=a[i++],v=a[i++];g[u].push(v);g[v].push(u)}let s=a[i++],t=a[i++],d=Array(n).fill(-1),q=[s];d[s]=0;for(let h=0;h<q.length;h++){let u=q[h];for(const v of g[u])if(d[v]<0)d[v]=d[u]+1,q.push(v)}console.log(d[t]);"
+      }
+    ],
+    "problemCreator": "REPLACE_WITH_YOUR_USER_OBJECT_ID"
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "title": "Maximum in an Array",
+    "description": "Given an integer n followed by n integers, print the largest value in the array.\n\nInput format:\nThe first line contains n. The second line contains n space-separated integers.\n\nOutput format:\nPrint the largest integer.",
+    "difficulty": "easy",
+    "tags": "array",
+    "visibleTestCases": [
+      {
+        "input": "5\n3 1 9 2 7",
+        "output": "9",
+        "explanation": "The largest value in the array is 9."
+      },
+      {
+        "input": "4\n-8 -3 -12 -5",
+        "output": "-3",
+        "explanation": "All values are negative, and -3 is the largest."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1\n42",
+        "output": "42"
+      },
+      {
+        "input": "6\n1000000000 -1000000000 17 5 0 999999999",
+        "output": "1000000000"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst values = fs.readFileSync(0, 'utf8').trim().split(/\\s+/).map(Number);\nconst n = values[0];\nconst numbers = values.slice(1, n + 1);\nlet answer = 0;\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        long[] numbers = new long[n];\n        for (int i = 0; i < n; i++) numbers[i] = scanner.nextLong();\n        long answer = 0;\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    vector<long long> numbers(n);\n    for (long long &number : numbers) cin >> number;\n    long long answer = 0;\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst values = fs.readFileSync(0, 'utf8').trim().split(/\\s+/).map(Number);\nconst n = values[0];\nconst numbers = values.slice(1, n + 1);\nlet answer = -Infinity;\nfor (const number of numbers) answer = Math.max(answer, number);\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        long answer = Long.MIN_VALUE;\n        for (int i = 0; i < n; i++) answer = Math.max(answer, scanner.nextLong());\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <climits>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    long long answer = LLONG_MIN;\n    for (int i = 0; i < n; i++) {\n        long long number;\n        cin >> number;\n        if (number > answer) answer = number;\n    }\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ]
+  },
+  {
+    "title": "Valid Parentheses",
+    "description": "Given a string containing only the characters '(', ')', '[', ']', '{', and '}', determine whether every opening bracket is closed by the same type of bracket in the correct order. Print true if the string is valid; otherwise print false.\n\nInput format:\nA single non-empty string of brackets.\n\nOutput format:\nPrint true or false.",
+    "difficulty": "medium",
+    "tags": "stack",
+    "visibleTestCases": [
+      {
+        "input": "()[]{}",
+        "output": "true",
+        "explanation": "Each opening bracket is closed by its matching bracket in the correct order."
+      },
+      {
+        "input": "([)]",
+        "output": "false",
+        "explanation": "The closing parenthesis appears before the matching square bracket is closed."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "((()))",
+        "output": "true"
+      },
+      {
+        "input": "{[()]}(",
+        "output": "false"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst value = fs.readFileSync(0, 'utf8').trim();\nconst brackets = value.split('');\nconst stack = [];\nlet valid = false;\nconsole.log(valid ? 'true' : 'false');"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        String value = scanner.next();\n        char[] brackets = value.toCharArray();\n        boolean valid = false;\n        System.out.println(valid ? \"true\" : \"false\");\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\n#include <string>\nusing namespace std;\n\nint main() {\n    string value;\n    cin >> value;\n    bool valid = false;\n    cout << (valid ? \"true\" : \"false\") << endl;\n    return 0;\n}"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst value = fs.readFileSync(0, 'utf8').trim();\nconst pairs = { ')': '(', ']': '[', '}': '{' };\nconst stack = [];\nlet valid = true;\nfor (const bracket of value) {\n  if (bracket === '(' || bracket === '[' || bracket === '{') stack.push(bracket);\n  else if (stack.pop() !== pairs[bracket]) { valid = false; break; }\n}\nconsole.log(valid && stack.length === 0 ? 'true' : 'false');"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.ArrayDeque;\nimport java.util.Deque;\nimport java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        String value = scanner.next();\n        Deque<Character> stack = new ArrayDeque<>();\n        boolean valid = true;\n        for (char bracket : value.toCharArray()) {\n            if (bracket == '(' || bracket == '[' || bracket == '{') stack.push(bracket);\n            else {\n                if (stack.isEmpty()) { valid = false; break; }\n                char opening = stack.pop();\n                if ((bracket == ')' && opening != '(') || (bracket == ']' && opening != '[') || (bracket == '}' && opening != '{')) { valid = false; break; }\n            }\n        }\n        System.out.println(valid && stack.isEmpty() ? \"true\" : \"false\");\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <stack>\n#include <string>\nusing namespace std;\n\nint main() {\n    string value;\n    cin >> value;\n    stack<char> openings;\n    bool valid = true;\n    for (char bracket : value) {\n        if (bracket == '(' || bracket == '[' || bracket == '{') openings.push(bracket);\n        else {\n            if (openings.empty()) { valid = false; break; }\n            char opening = openings.top();\n            openings.pop();\n            if ((bracket == ')' && opening != '(') || (bracket == ']' && opening != '[') || (bracket == '}' && opening != '{')) { valid = false; break; }\n        }\n    }\n    cout << (valid && openings.empty() ? \"true\" : \"false\") << endl;\n    return 0;\n}"
+      }
+    ]
+  }
+]

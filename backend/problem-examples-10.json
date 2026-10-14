@@ -1,0 +1,562 @@
+[
+  {
+    "title": "Sum of an Array",
+    "description": "Given n integers, print their sum.\n\nInput format:\nThe first line contains n. The second line contains n space-separated integers.\n\nOutput format:\nPrint the sum.",
+    "difficulty": "easy",
+    "tags": "array",
+    "visibleTestCases": [
+      {
+        "input": "5\n1 2 3 4 5",
+        "output": "15",
+        "explanation": "The sum is 1 + 2 + 3 + 4 + 5 = 15."
+      },
+      {
+        "input": "4\n-2 7 0 3",
+        "output": "8",
+        "explanation": "Adding all four values gives 8."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1\n9",
+        "output": "9"
+      },
+      {
+        "input": "6\n1000000000 1000000000 -2 4 0 5",
+        "output": "2000000007"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst v = fs.readFileSync(0, 'utf8').trim().split(/\\s+/).map(Number);\nconst n = v[0];\nconsole.log(v.slice(1, n + 1).reduce((sum, x) => sum + x, 0));"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.Scanner;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner s = new Scanner(System.in);\n        int n = s.nextInt();\n        long sum = 0;\n        for (int i = 0; i < n; i++) sum += s.nextLong();\n        System.out.println(sum);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\nint main() {\n    int n; cin >> n;\n    long long sum = 0, x;\n    for (int i = 0; i < n; i++) { cin >> x; sum += x; }\n    cout << sum << endl;\n}"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst tokens = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\nlet answer = 0;\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long answer = 0;\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long answer = 0;\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ]
+  },
+  {
+    "title": "Count Target Occurrences",
+    "description": "Given n integers and a target value, count how many times the target appears.\n\nInput format:\nThe first line contains n. The second line contains n space-separated integers. The final line contains the target.\n\nOutput format:\nPrint the number of occurrences.",
+    "difficulty": "easy",
+    "tags": "array",
+    "visibleTestCases": [
+      {
+        "input": "6\n2 5 2 8 2 1\n2",
+        "output": "3",
+        "explanation": "The value 2 appears three times."
+      },
+      {
+        "input": "4\n1 3 5 7\n4",
+        "output": "0",
+        "explanation": "The target 4 does not appear."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1\n-3\n-3",
+        "output": "1"
+      },
+      {
+        "input": "5\n9 9 9 9 9\n9",
+        "output": "5"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst v = fs.readFileSync(0, 'utf8').trim().split(/\\s+/).map(Number);\nconst n = v[0], target = v[n + 1];\nconsole.log(v.slice(1, n + 1).filter(x => x === target).length);"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.Scanner;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner s = new Scanner(System.in);\n        int n = s.nextInt();\n        int[] a = new int[n];\n        for (int i = 0; i < n; i++) a[i] = s.nextInt();\n        int target = s.nextInt(), count = 0;\n        for (int x : a) if (x == target) count++;\n        System.out.println(count);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <vector>\nusing namespace std;\nint main() {\n    int n; cin >> n;\n    vector<int> a(n);\n    for (int &x : a) cin >> x;\n    int target, count = 0; cin >> target;\n    for (int x : a) if (x == target) count++;\n    cout << count << endl;\n}"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst tokens = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\nlet answer = 0;\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long answer = 0;\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long answer = 0;\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ]
+  },
+  {
+    "title": "Binary Search",
+    "description": "Given a sorted array and a target, print the zero-based index of the target. Print -1 if it is not present. If the target appears more than once, any matching index is accepted.\n\nInput format:\nThe first line contains n. The second line contains n sorted integers. The final line contains the target.\n\nOutput format:\nPrint the index or -1.",
+    "difficulty": "easy",
+    "tags": "array",
+    "visibleTestCases": [
+      {
+        "input": "6\n1 3 5 7 9 11\n7",
+        "output": "3",
+        "explanation": "The target 7 is at index 3."
+      },
+      {
+        "input": "5\n2 4 6 8 10\n3",
+        "output": "-1",
+        "explanation": "The target is not in the array."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1\n42\n42",
+        "output": "0"
+      },
+      {
+        "input": "7\n-9 -4 0 2 5 8 12\n12",
+        "output": "6"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst v = fs.readFileSync(0, 'utf8').trim().split(/\\s+/).map(Number);\nconst n = v[0], a = v.slice(1, n + 1), target = v[n + 1];\nlet left = 0, right = n - 1, answer = -1;\nwhile (left <= right) { const mid = Math.floor((left + right) / 2); if (a[mid] === target) { answer = mid; break; } if (a[mid] < target) left = mid + 1; else right = mid - 1; }\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.Scanner;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner s = new Scanner(System.in);\n        int n = s.nextInt(); int[] a = new int[n];\n        for (int i = 0; i < n; i++) a[i] = s.nextInt();\n        int target = s.nextInt(), left = 0, right = n - 1, answer = -1;\n        while (left <= right) { int mid = left + (right - left) / 2; if (a[mid] == target) { answer = mid; break; } if (a[mid] < target) left = mid + 1; else right = mid - 1; }\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <vector>\nusing namespace std;\nint main() {\n    int n; cin >> n; vector<int> a(n);\n    for (int &x : a) cin >> x;\n    int target; cin >> target;\n    int left = 0, right = n - 1, answer = -1;\n    while (left <= right) { int mid = left + (right - left) / 2; if (a[mid] == target) { answer = mid; break; } if (a[mid] < target) left = mid + 1; else right = mid - 1; }\n    cout << answer << endl;\n}"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst tokens = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\nlet answer = 0;\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long answer = 0;\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long answer = 0;\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ]
+  },
+  {
+    "title": "Reverse an Array",
+    "description": "Given n integers, print them in reverse order.\n\nInput format:\nThe first line contains n. The second line contains n space-separated integers.\n\nOutput format:\nPrint the reversed values separated by spaces.",
+    "difficulty": "easy",
+    "tags": "array",
+    "visibleTestCases": [
+      {
+        "input": "5\n1 2 3 4 5",
+        "output": "5 4 3 2 1",
+        "explanation": "The array values are printed from last to first."
+      },
+      {
+        "input": "4\n8 -1 0 6",
+        "output": "6 0 -1 8",
+        "explanation": "The reversed order is 6, 0, -1, 8."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1\n7",
+        "output": "7"
+      },
+      {
+        "input": "3\n-3 -2 -1",
+        "output": "-1 -2 -3"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst v = fs.readFileSync(0, 'utf8').trim().split(/\\s+/).map(Number);\nconst n = v[0];\nconsole.log(v.slice(1, n + 1).reverse().join(' '));"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.Scanner;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner s = new Scanner(System.in); int n = s.nextInt(); int[] a = new int[n];\n        for (int i = 0; i < n; i++) a[i] = s.nextInt();\n        StringBuilder out = new StringBuilder();\n        for (int i = n - 1; i >= 0; i--) { if (out.length() > 0) out.append(' '); out.append(a[i]); }\n        System.out.println(out);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <vector>\nusing namespace std;\nint main() {\n    int n; cin >> n; vector<int> a(n);\n    for (int &x : a) cin >> x;\n    for (int i = n - 1; i >= 0; i--) { if (i != n - 1) cout << ' '; cout << a[i]; }\n    cout << endl;\n}"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst tokens = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\nlet answer = 0;\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long answer = 0;\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long answer = 0;\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ]
+  },
+  {
+    "title": "Next Greater Element",
+    "description": "For each value in an array, find the first value to its right that is greater than it. If no greater value exists to the right, use -1.\n\nInput format:\nThe first line contains n. The second line contains n space-separated integers.\n\nOutput format:\nPrint the answers in order, separated by spaces.",
+    "difficulty": "medium",
+    "tags": "stack",
+    "visibleTestCases": [
+      {
+        "input": "4\n4 5 2 10",
+        "output": "5 10 10 -1",
+        "explanation": "Each element is paired with its next larger value to the right."
+      },
+      {
+        "input": "5\n3 3 3 3 3",
+        "output": "-1 -1 -1 -1 -1",
+        "explanation": "No element has a greater value to its right."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1\n8",
+        "output": "-1"
+      },
+      {
+        "input": "6\n1 7 3 4 5 2",
+        "output": "7 -1 4 5 -1 -1"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst v = fs.readFileSync(0, 'utf8').trim().split(/\\s+/).map(Number);\nconst n = v[0], a = v.slice(1, n + 1), ans = Array(n).fill(-1), stack = [];\nfor (let i = 0; i < n; i++) { while (stack.length && a[stack[stack.length - 1]] < a[i]) ans[stack.pop()] = a[i]; stack.push(i); }\nconsole.log(ans.join(' '));"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner s = new Scanner(System.in); int n = s.nextInt(); int[] a = new int[n], ans = new int[n];\n        for (int i = 0; i < n; i++) a[i] = s.nextInt(); Arrays.fill(ans, -1);\n        Deque<Integer> stack = new ArrayDeque<>();\n        for (int i = 0; i < n; i++) { while (!stack.isEmpty() && a[stack.peek()] < a[i]) ans[stack.pop()] = a[i]; stack.push(i); }\n        StringBuilder out = new StringBuilder(); for (int i = 0; i < n; i++) { if (i > 0) out.append(' '); out.append(ans[i]); }\n        System.out.println(out);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <vector>\n#include <stack>\nusing namespace std;\nint main() {\n    int n; cin >> n; vector<int> a(n), ans(n, -1); for (int &x : a) cin >> x;\n    stack<int> st;\n    for (int i = 0; i < n; i++) { while (!st.empty() && a[st.top()] < a[i]) { ans[st.top()] = a[i]; st.pop(); } st.push(i); }\n    for (int i = 0; i < n; i++) { if (i) cout << ' '; cout << ans[i]; } cout << endl;\n}"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst tokens = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\nlet answer = 0;\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long answer = 0;\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long answer = 0;\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ]
+  },
+  {
+    "title": "Fibonacci Number",
+    "description": "Given a non-negative integer n, print the nth Fibonacci number. The sequence starts with F(0) = 0 and F(1) = 1.\n\nInput format:\nA single integer n, where 0 <= n <= 92.\n\nOutput format:\nPrint F(n).",
+    "difficulty": "easy",
+    "tags": "Dynamic Programming",
+    "visibleTestCases": [
+      {
+        "input": "7",
+        "output": "13",
+        "explanation": "The sequence begins 0, 1, 1, 2, 3, 5, 8, 13."
+      },
+      {
+        "input": "0",
+        "output": "0",
+        "explanation": "F(0) is 0."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1",
+        "output": "1"
+      },
+      {
+        "input": "50",
+        "output": "12586269025"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst n = Number(fs.readFileSync(0, 'utf8').trim());\nlet a = 0n, b = 1n;\nfor (let i = 0; i < n; i++) [a, b] = [b, a + b];\nconsole.log(a.toString());"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.Scanner;\npublic class Main {\n    public static void main(String[] args) {\n        int n = new Scanner(System.in).nextInt(); long a = 0, b = 1;\n        for (int i = 0; i < n; i++) { long next = a + b; a = b; b = next; }\n        System.out.println(a);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\nint main() {\n    int n; cin >> n; unsigned long long a = 0, b = 1;\n    for (int i = 0; i < n; i++) { unsigned long long next = a + b; a = b; b = next; }\n    cout << a << endl;\n}"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst tokens = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\nlet answer = 0;\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long answer = 0;\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long answer = 0;\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ]
+  },
+  {
+    "title": "Climbing Stairs",
+    "description": "You are climbing a staircase with n steps. Each time you can climb either 1 or 2 steps. Print the number of distinct ways to reach the top.\n\nInput format:\nA single integer n, where 0 <= n <= 90.\n\nOutput format:\nPrint the number of ways.",
+    "difficulty": "easy",
+    "tags": "Dynamic Programming",
+    "visibleTestCases": [
+      {
+        "input": "3",
+        "output": "3",
+        "explanation": "The ways are 1+1+1, 1+2, and 2+1."
+      },
+      {
+        "input": "5",
+        "output": "8",
+        "explanation": "There are eight ways to climb five steps."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "0",
+        "output": "1"
+      },
+      {
+        "input": "10",
+        "output": "89"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst n = Number(fs.readFileSync(0, 'utf8').trim());\nlet a = 1n, b = 1n;\nfor (let i = 0; i < n; i++) [a, b] = [b, a + b];\nconsole.log(a.toString());"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.Scanner;\npublic class Main {\n    public static void main(String[] args) {\n        int n = new Scanner(System.in).nextInt(); long a = 1, b = 1;\n        for (int i = 0; i < n; i++) { long next = a + b; a = b; b = next; }\n        System.out.println(a);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\nusing namespace std;\nint main() {\n    int n; cin >> n; unsigned long long a = 1, b = 1;\n    for (int i = 0; i < n; i++) { unsigned long long next = a + b; a = b; b = next; }\n    cout << a << endl;\n}"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst tokens = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\nlet answer = 0;\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long answer = 0;\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long answer = 0;\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ]
+  },
+  {
+    "title": "Queue Command Processor",
+    "description": "Process q queue commands. Each command is either \"enqueue x\" to add x to the back, or \"dequeue\" to remove and print the front value. If the queue is empty during a dequeue, print EMPTY.\n\nInput format:\nThe first line contains q. Each of the following q lines contains one command.\n\nOutput format:\nPrint one result for each dequeue command, each on its own line.",
+    "difficulty": "easy",
+    "tags": "queue",
+    "visibleTestCases": [
+      {
+        "input": "5\nenqueue 4\nenqueue 8\ndequeue\nenqueue 2\ndequeue",
+        "output": "4\n8",
+        "explanation": "The first two dequeue commands return 4 and 8 in FIFO order."
+      },
+      {
+        "input": "3\ndequeue\nenqueue 9\ndequeue",
+        "output": "EMPTY\n9",
+        "explanation": "The first dequeue finds an empty queue; the next returns 9."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "2\nenqueue 6\ndequeue",
+        "output": "6"
+      },
+      {
+        "input": "4\nenqueue -1\ndequeue\ndequeue\ndequeue",
+        "output": "-1\nEMPTY\nEMPTY"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split(/\\n/);\nconst q = Number(lines[0]), queue = [], out = [];\nfor (let i = 1; i <= q; i++) { const [cmd, value] = lines[i].trim().split(/\\s+/); if (cmd === 'enqueue') queue.push(value); else out.push(queue.length ? queue.shift() : 'EMPTY'); }\nconsole.log(out.join('\\n'));"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner s = new Scanner(System.in); int q = Integer.parseInt(s.nextLine().trim());\n        Queue<String> queue = new ArrayDeque<>(); StringBuilder out = new StringBuilder();\n        for (int i = 0; i < q; i++) { String command = s.nextLine().trim(); if (command.startsWith(\"enqueue \")) queue.add(command.substring(8)); else { if (out.length() > 0) out.append('\\n'); out.append(queue.isEmpty() ? \"EMPTY\" : queue.remove()); } }\n        System.out.print(out);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <queue>\n#include <string>\nusing namespace std;\nint main() {\n    int q; cin >> q; queue<string> values; string command, value, out; bool first = true;\n    for (int i = 0; i < q; i++) { cin >> command; if (command == \"enqueue\") cin >> value, values.push(value); else { if (!first) out += '\\n'; first = false; if (values.empty()) out += \"EMPTY\"; else { out += values.front(); values.pop(); } } }\n    cout << out;\n}"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst tokens = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\nlet answer = 0;\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long answer = 0;\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long answer = 0;\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ]
+  },
+  {
+    "title": "Breadth-First Search Traversal",
+    "description": "Given an undirected graph with vertices numbered 1 through n and a starting vertex s, print the vertices in breadth-first search order. Visit neighbors in the order their edges appear in the input. The graph may be disconnected; print only vertices reachable from s.\n\nInput format:\nThe first line contains n and m. The next m lines each contain an edge u v. The final line contains s.\n\nOutput format:\nPrint the traversal order separated by spaces.",
+    "difficulty": "medium",
+    "tags": "graph",
+    "visibleTestCases": [
+      {
+        "input": "5 4\n1 2\n1 3\n2 4\n3 5\n1",
+        "output": "1 2 3 4 5",
+        "explanation": "BFS visits all immediate neighbors before moving to the next level."
+      },
+      {
+        "input": "4 2\n1 2\n3 4\n3",
+        "output": "3 4",
+        "explanation": "Only vertices reachable from start vertex 3 are printed."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1 0\n1",
+        "output": "1"
+      },
+      {
+        "input": "6 5\n1 2\n1 3\n2 4\n4 5\n3 6\n2",
+        "output": "2 1 4 3 5 6"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst v = fs.readFileSync(0, 'utf8').trim().split(/\\s+/).map(Number); let i = 0;\nconst n = v[i++], m = v[i++], graph = Array.from({ length: n + 1 }, () => []);\nfor (let e = 0; e < m; e++) { const a = v[i++], b = v[i++]; graph[a].push(b); graph[b].push(a); }\nconst start = v[i], seen = Array(n + 1).fill(false), queue = [start], order = []; seen[start] = true;\nfor (let h = 0; h < queue.length; h++) { const x = queue[h]; order.push(x); for (const y of graph[x]) if (!seen[y]) { seen[y] = true; queue.push(y); } }\nconsole.log(order.join(' '));"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner s = new Scanner(System.in); int n = s.nextInt(), m = s.nextInt();\n        List<List<Integer>> g = new ArrayList<>(); for (int i = 0; i <= n; i++) g.add(new ArrayList<>());\n        for (int i = 0; i < m; i++) { int a = s.nextInt(), b = s.nextInt(); g.get(a).add(b); g.get(b).add(a); }\n        int start = s.nextInt(); boolean[] seen = new boolean[n + 1]; Queue<Integer> q = new ArrayDeque<>(); List<Integer> order = new ArrayList<>();\n        seen[start] = true; q.add(start);\n        while (!q.isEmpty()) { int x = q.remove(); order.add(x); for (int y : g.get(x)) if (!seen[y]) { seen[y] = true; q.add(y); } }\n        for (int i = 0; i < order.size(); i++) { if (i > 0) System.out.print(\" \"); System.out.print(order.get(i)); }\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <vector>\n#include <queue>\nusing namespace std;\nint main() {\n    int n, m; cin >> n >> m; vector<vector<int>> g(n + 1);\n    for (int i = 0; i < m; i++) { int a, b; cin >> a >> b; g[a].push_back(b); g[b].push_back(a); }\n    int start; cin >> start; vector<bool> seen(n + 1, false); queue<int> q; vector<int> order; seen[start] = true; q.push(start);\n    while (!q.empty()) { int x = q.front(); q.pop(); order.push_back(x); for (int y : g[x]) if (!seen[y]) { seen[y] = true; q.push(y); } }\n    for (int i = 0; i < (int)order.size(); i++) { if (i) cout << ' '; cout << order[i]; } cout << endl;\n}"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst tokens = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\nlet answer = 0;\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long answer = 0;\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long answer = 0;\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ]
+  },
+  {
+    "title": "Number of Islands",
+    "description": "Given a grid containing only 0s and 1s, count the number of islands. An island is a group of adjacent 1s connected horizontally or vertically. Diagonal contact does not connect islands.\n\nInput format:\nThe first line contains rows and columns. The next rows lines each contain a string of columns characters, each either 0 or 1.\n\nOutput format:\nPrint the number of islands.",
+    "difficulty": "medium",
+    "tags": "graph",
+    "visibleTestCases": [
+      {
+        "input": "3 4\n1100\n0101\n0011",
+        "output": "2",
+        "explanation": "The upper-left group and lower-right group are separate islands."
+      },
+      {
+        "input": "2 3\n000\n000",
+        "output": "0",
+        "explanation": "There are no cells containing 1."
+      }
+    ],
+    "hiddenTestCases": [
+      {
+        "input": "1 1\n1",
+        "output": "1"
+      },
+      {
+        "input": "4 4\n1111\n1011\n1111\n0001",
+        "output": "1"
+      }
+    ],
+    "referenceSolution": [
+      {
+        "language": "javascript",
+        "completeCode": "const fs = require('fs');\nconst lines = fs.readFileSync(0, 'utf8').trim().split(/\\s+/); const r = Number(lines[0]), c = Number(lines[1]);\nconst grid = lines.slice(2, 2 + r).map(x => x.split('')); let count = 0;\nfor (let i = 0; i < r; i++) for (let j = 0; j < c; j++) if (grid[i][j] === '1') { count++; const q = [[i, j]]; grid[i][j] = '0'; for (let h = 0; h < q.length; h++) { const [x, y] = q[h]; for (const [dx, dy] of [[1,0],[-1,0],[0,1],[0,-1]]) { const a = x + dx, b = y + dy; if (a >= 0 && a < r && b >= 0 && b < c && grid[a][b] === '1') { grid[a][b] = '0'; q.push([a,b]); } } } }\nconsole.log(count);"
+      },
+      {
+        "language": "java",
+        "completeCode": "import java.util.*;\npublic class Main {\n    public static void main(String[] args) {\n        Scanner s = new Scanner(System.in); int r = s.nextInt(), c = s.nextInt(); char[][] g = new char[r][c];\n        for (int i = 0; i < r; i++) g[i] = s.next().toCharArray(); int count = 0; int[] dr = {1,-1,0,0}, dc = {0,0,1,-1};\n        for (int i = 0; i < r; i++) for (int j = 0; j < c; j++) if (g[i][j] == '1') { count++; Queue<int[]> q = new ArrayDeque<>(); q.add(new int[]{i,j}); g[i][j] = '0'; while (!q.isEmpty()) { int[] p = q.remove(); for (int k = 0; k < 4; k++) { int a = p[0] + dr[k], b = p[1] + dc[k]; if (a >= 0 && a < r && b >= 0 && b < c && g[a][b] == '1') { g[a][b] = '0'; q.add(new int[]{a,b}); } } } }\n        System.out.println(count);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "completeCode": "#include <iostream>\n#include <vector>\n#include <queue>\n#include <string>\nusing namespace std;\nint main() {\n    int r, c; cin >> r >> c; vector<string> g(r); for (string &row : g) cin >> row; int count = 0; int dr[4] = {1,-1,0,0}, dc[4] = {0,0,1,-1};\n    for (int i = 0; i < r; i++) for (int j = 0; j < c; j++) if (g[i][j] == '1') { count++; queue<pair<int,int>> q; q.push({i,j}); g[i][j] = '0'; while (!q.empty()) { auto [x,y] = q.front(); q.pop(); for (int k = 0; k < 4; k++) { int a = x + dr[k], b = y + dc[k]; if (a >= 0 && a < r && b >= 0 && b < c && g[a][b] == '1') { g[a][b] = '0'; q.push({a,b}); } } } }\n    cout << count << endl;\n}"
+      }
+    ],
+    "startCode": [
+      {
+        "language": "javascript",
+        "initialCode": "const fs = require('fs');\nconst tokens = fs.readFileSync(0, 'utf8').trim().split(/\\s+/);\nlet answer = 0;\nconsole.log(answer);"
+      },
+      {
+        "language": "java",
+        "initialCode": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        long answer = 0;\n        System.out.println(answer);\n    }\n}"
+      },
+      {
+        "language": "c++",
+        "initialCode": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long answer = 0;\n    cout << answer << endl;\n    return 0;\n}"
+      }
+    ]
+  }
+]
